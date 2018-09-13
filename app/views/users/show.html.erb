@@ -16,20 +16,18 @@
         </tr>
       </thead>
       <tbody>
-        <% @users.each do |user| %>
           <tr>
-            <td><%= user.email %></td>
+            <td><%= current_user.email %></td>
           </tr>
           <tr>
-            <td><%= user.first_name %></td>
+            <td><%= current_user.first_name %></td>
           </tr>
           <tr>
-            <td><%= user.last_name %></td>
+            <td><%= current_user.last_name %></td>
           </tr>
           <tr>
-            <td><%= user.password_digest %></td>
+            <td><%= current_user.password_digest %></td>
           </tr>
-        <% end %>
       </tbody>
     </table>
 

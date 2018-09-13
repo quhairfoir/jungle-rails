@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   def show 
-    @users = User.all
+    # TO DO -- pass current_user to this route in order to display user info
+    # @user = User.find_by_id(params[:id])
   end
 
   def new
