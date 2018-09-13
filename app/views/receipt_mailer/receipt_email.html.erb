@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thank you for your order, <%= @user.first_name %></h1>
+    <p>
+      Order details:<br>
+      <ul>
+        <% @order.line_items.each do |item| %>
+        <li><%= item.product.name %></li>
+        <li><%= item.quantity %></li>
+        <li><%= item.product.price %></li>
+        <% end %>
+      </ul>
+    </p>
+  </body>
+</html>
