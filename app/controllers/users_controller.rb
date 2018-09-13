@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to :products
     else
-      render :new
+      render 'new'
     end
   end
 
