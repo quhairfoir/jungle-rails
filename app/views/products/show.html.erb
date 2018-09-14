@@ -26,6 +26,23 @@
       </div>
     </div>
 
+    <% if @product.ratings.present? %>
+
+      <% @product.ratings.each do |comment| %>
+
+        <% user = User.find_by id: comment.user_id %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <strong><%= user.first_name%></strong>
+            <span class="text-muted">reviewed on <%= comment.created_at %></span>
+          </div>
+          <div class="panel-body">
+            <strong><%= comment.rating %>/5</strong>
+            <p><%= comment.description %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
   </article>
 
 </section>

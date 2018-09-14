@@ -171,7 +171,7 @@ User.create!({
   password_confirmation: 'somethingsomething'
 })
 
-## REVIEWS
+## RATINGS
 
 puts "Re-creating Ratings ..."
 
@@ -187,8 +187,7 @@ Rating.create!({
 Rating.create!({
   user_id: 1,
   product_id: 2,
-  description: "I mean, there was nothing wrong with it 
-  but I don't think it was worth the money!",
+  description: "I mean, there was nothing wrong with it but I don't think it was worth the money!",
   rating: 3
 })
 
