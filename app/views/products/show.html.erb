@@ -26,27 +26,36 @@
       </div>
     </div>
 
-    <%= form_for [@product, @rating] do |f| %>
-      <%= f.label 'Rating out of 5' %>
-      <%= f.text_field :rating %><br/>
-      <%= f.label :description %>
-      <%= f.text_field :description %><br/>
-      <%= f.submit %>
+    <div class="row">
+    <div class="col-sm-6 col-sm-offset-1">
+
+    <%= form_for [@product, @review] do |f| %>
+      <div class="form-group">
+        <%= f.label 'Rating out of 5' %>
+        <%= f.text_field :rating %>
+      </div>
+      <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+      </div>
+      <%= f.submit 'Submit Review',  class: 'btn btn-primary'%>
     <% end %>
+    </div>
+    </div>
+    <% if @product.reviews.present? %>
 
-    <% if @product.ratings.present? %>
+      <% @product.reviews.each do |review| %>
 
-      <% @product.ratings.each do |comment| %>
-
-        <% user = User.find_by id: comment.user_id %>
+        <% user = User.find_by id: review.user_id %>
         <div class="panel panel-default">
           <div class="panel-heading">
             <strong><%= user.first_name%></strong>
-            <span class="text-muted">reviewed on <%= comment.created_at %></span>
+            <span class="text-muted">reviewed on <%= review.created_at %></span>
           </div>
           <div class="panel-body">
-            <strong><%= comment.rating %>/5</strong>
-            <p><%= comment.description %></p>
+            <strong><%= review.rating %>/5</strong>
+            <p><%= review.description %></p>
+            <%= link_to fa_icon('trash'), [@product, review], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
           </div>
         </div>
       <% end %>

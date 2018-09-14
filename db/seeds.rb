@@ -171,41 +171,41 @@ User.create!({
   password_confirmation: 'somethingsomething'
 })
 
-## RATINGS
+## REVIEWS
 
-puts "Re-creating Ratings ..."
+puts "Re-creating Reviews ..."
 
-Rating.destroy_all
+Review.destroy_all
 
-Rating.create!({
+Review.create!({
   user_id: 2,
   product_id: 2,
   description: "Best of this type of thing I've ever had!",
   rating: 5
 })
 
-Rating.create!({
+Review.create!({
   user_id: 1,
   product_id: 2,
   description: "I mean, there was nothing wrong with it but I don't think it was worth the money!",
   rating: 3
 })
 
-Rating.create!({
+Review.create!({
   user_id: 3,
   product_id: 5,
   description: '',
   rating: 2
 })
 
-Rating.create!({
+Review.create!({
   user_id: 3,
   product_id: 2,
   description: '',
   rating: 1
 })
 
-Rating.create!({
+Review.create!({
   user_id: 1,
   product_id: 10,
   description: "the worst!",
