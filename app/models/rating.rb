@@ -2,6 +2,6 @@ class Rating < ActiveRecord::Base
   belongs_to :user
   belongs_to :product
 
-  validates :user, :product, :description, presence: true 
-  validates :rating, numericality: { greater_than: 0, less_than: 6 }
+  validates :user_id, :product_id, presence: true
+  validates :rating, presence: true, numericality: { greater_than: 0, less_than: 6 }
 end
