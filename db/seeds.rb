@@ -28,6 +28,7 @@ puts "Finding or Creating Categories ..."
 cat1 = Category.find_or_create_by! name: 'Apparel'
 cat2 = Category.find_or_create_by! name: 'Electronics'
 cat3 = Category.find_or_create_by! name: 'Furniture'
+cat4 = Category.find_or_create_by! name: 'Cats'
 
 ## PRODUCTS
 
@@ -130,6 +131,86 @@ cat3.products.create!({
   image: open_asset('furniture3.jpg'),
   quantity: 23,
   price: 2_483.75
+})
+
+cat4.products.create!({
+  name:  'Toast',
+  description: 'The bestest cat in the all of everything.',
+  image: open_asset('toast.png'),
+  quantity: 1,
+  price: 999_999.99
+})
+
+## USERS
+
+puts "Re-creating Users ..."
+
+User.destroy_all
+
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: 'yolo@bro.com',
+  password: 'yolo',
+  password_confirmation: 'yolo'
+})
+
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: 'so0o0o0oRaNd0m@2006.com',
+  password: 'lolzsorandom',
+  password_confirmation: 'lolzsorandom'
+})
+
+User.create!({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: 'somethingsomething@whatever.com',
+  password: 'somethingsomething',
+  password_confirmation: 'somethingsomething'
+})
+
+## REVIEWS
+
+puts "Re-creating Ratings ..."
+
+Rating.destroy_all
+
+Rating.create!({
+  user_id: 2,
+  product_id: 2,
+  description: "Best of this type of thing I've ever had!",
+  rating: 5
+})
+
+Rating.create!({
+  user_id: 1,
+  product_id: 2,
+  description: "I mean, there was nothing wrong with it 
+  but I don't think it was worth the money!",
+  rating: 3
+})
+
+Rating.create!({
+  user_id: 3,
+  product_id: 5,
+  description: '',
+  rating: 2
+})
+
+Rating.create!({
+  user_id: 3,
+  product_id: 2,
+  description: '',
+  rating: 1
+})
+
+Rating.create!({
+  user_id: 1,
+  product_id: 10,
+  description: "the worst!",
+  rating: 1
 })
 
 
