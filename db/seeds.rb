@@ -158,7 +158,7 @@ cat4.products.create!({
 })
 
 cat4.products.create!({
-  name:  'Mr. Bunnernet-Squash',
+  name:  'Mr. Bunnernut-Squash',
   description: Faker::Hipster.paragraph,
   image: open_asset('Mr-BNS.png'),
   quantity: 1,
