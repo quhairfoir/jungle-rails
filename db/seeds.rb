@@ -134,11 +134,35 @@ cat3.products.create!({
 })
 
 cat4.products.create!({
+  name:  'Lemmy',
+  description: Faker::Hipster.paragraph,
+  image: open_asset('cat1.jpeg'),
+  quantity: 1,
+  price: 159.54
+})
+
+cat4.products.create!({
+  name:  'Steve',
+  description: Faker::Hipster.paragraph,
+  image: open_asset('cat2.jpeg'),
+  quantity: 1,
+  price: 2_439.87
+})
+
+cat4.products.create!({
   name:  'Toast',
-  description: 'The bestest cat in the all of everything.',
+  description: Faker::Hipster.paragraph,
   image: open_asset('toast.png'),
   quantity: 1,
   price: 999_999.99
+})
+
+cat4.products.create!({
+  name:  'Mr. Bunnernet-Squash',
+  description: Faker::Hipster.paragraph,
+  image: open_asset('Mr-BNS.png'),
+  quantity: 1,
+  price: 290.99
 })
 
 ## USERS
