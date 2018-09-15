@@ -31,8 +31,8 @@
 
     <%= form_for [@product, @review] do |f| %>
       <div class="form-group">
-        <%= f.label 'Rating out of 5' %>
-        <%= f.text_field :rating %>
+        <%= f.label 'Give a rating (out of 5):'%>
+        <%= select(:review, :rating, options_for_select([[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]])) %>
       </div>
       <div class="form-group">
         <%= f.label :description %>
@@ -43,8 +43,9 @@
     </div>
     </div>
     <% if @product.reviews.present? %>
+      <% product_reviews = Review.where("product_id = ?", params[:id]).order(created_at: :desc) %>
 
-      <% @product.reviews.each do |review| %>
+      <% product_reviews.each do |review| %>
 
         <% user = User.find_by id: review.user_id %>
         <div class="panel panel-default">
