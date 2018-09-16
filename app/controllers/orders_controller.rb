@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @user = current_user
+    @user = current_user ? current_user.email : params[:stripeEmail]
     charge = perform_stripe_charge
     order  = create_order(charge)
 

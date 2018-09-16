@@ -27,9 +27,7 @@
     </div>
 
     <% if current_user %>
-
-    <div class="row">
-    <div class="col-sm-6 col-sm-offset-1">
+    <div class="panel">
 
       <% if flash[:error] %>
         <div id="error_explanation">
@@ -51,9 +49,8 @@
         </div>
         <%= f.submit 'Submit Review',  class: 'btn btn-primary'%>
       <% end %>
-      </div>
-      </div>
-
+    
+    </div>
     <% end %>
 
     <% if @product.reviews.present? %>
