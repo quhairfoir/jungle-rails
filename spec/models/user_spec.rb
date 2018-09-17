@@ -32,17 +32,18 @@ RSpec.describe User, type: :model do
   end
 
   describe '.authenticate_with_credentials' do
-
-    it 'should return true with valid credentials' do
-      expect(User.authenticate_with_credentials('heya@hithere.com', 'holagirl')).to be_truthy
+    before :each do
+      @user = User.create(first_name: 'A', last_name: 'B', email: 'heya@hithere.com', password: 'supersecret', password_confirmation: 'supersecret')
     end
 
-    it 'should return false with invalid email' do
-      expect(User.authenticate_with_credentials('', 'holagirl')).to be_nil
+    it { is_expected.to be_truthy}
+
+    it 'should return nil with invalid email' do
+      expect(User.authenticate_with_credentials('heya@hellothere.com', 'supersecret')).to be_nil
     end
 
-    it 'should return false with too short a password' do
-      expect(User.authenticate_with_credentials('heya@hithere.com', 'hola')).to be_nil
+    it 'should return nil with wrong password' do
+      expect(User.authenticate_with_credentials('heya@hithere.com', 'SUPERSECRET')).to be_nil
     end
 
   end

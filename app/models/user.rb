@@ -10,8 +10,9 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
 
   def email=(value)
-    value ? super(value.strip) : nil;
+    value ? super(value.strip) : nil
   end
+
   
   EMAIL_FORMAT = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: EMAIL_FORMAT }, uniqueness: true
@@ -21,9 +22,9 @@ class User < ActiveRecord::Base
   has_secure_password
 
   def self.authenticate_with_credentials(email, password)
-    new_user = User.new(first_name: 'A', last_name: 'B', email: email, password: password, password_confirmation: password)
-    if new_user.valid? 
-      return new_user
+    user = User.find_by email: email
+    if user && user.authenticate(password)
+      return user
     else
       nil
     end
