@@ -27,10 +27,9 @@
     </div>
 
     <% if current_user %>
-    <div class="panel">
-
+    
       <% if flash[:error] %>
-        <div id="error_explanation">
+        <div class="alert alert-danger">
           <h3>An error prevented your review from being saved:</h3>
           <ul>
             <li><%= flash[:error] %></li>
@@ -49,8 +48,7 @@
         </div>
         <%= f.submit 'Submit Review',  class: 'btn btn-primary'%>
       <% end %>
-    
-    </div>
+
     <% end %>
 
     <% if @product.reviews.present? %>
