@@ -8,21 +8,24 @@ class User < ActiveRecord::Base
   validates :password, confirmation: true
   validates_length_of :password, minimum: 6
   validates :password_confirmation, presence: true
+  has_secure_password
 
-  def email=(value)
-    value ? super(value.strip) : nil
-  end
-
+  before_validation :downcase_strip_email
   
   EMAIL_FORMAT = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: EMAIL_FORMAT }, uniqueness: true
-  
-  before_save { self.email = email.downcase }
 
-  has_secure_password
+  def downcase_strip_email
+    if email.nil?
+      return nil
+    else 
+      self.email = email.downcase.strip
+    end
+  end
 
   def self.authenticate_with_credentials(email, password)
-    user = User.find_by email: email
+    user_email = email.downcase.strip
+    user = User.find_by email: user_email
     if user && user.authenticate(password)
       return user
     else
