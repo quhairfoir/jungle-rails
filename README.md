@@ -18,7 +18,7 @@ Product page
 
 Cart
 
-!["cart"](https://github.com/andreafinlay/jungle-rails/blob/master/docs/cart.png?raw=true)
+!["cart"](https://github.com/quhairfoir/jungle-rails/blob/master/docs/cart.png?raw=true)
 
 Order confirmation page / Admin login
 
